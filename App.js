@@ -1,20 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { NavigationContainer} from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import HomeScreen from "./src/screens/HomeScreen";
+import ListScreen from "./src/screens/ListScreen";
+import ListScreenArray from "./src/screens/ListScreenArray"
+import card from "./src/screens/card"
+import StorageScreen from "./src/screens/storagescreen";
+import StateScreen from "./src/screens/statescreen"
+import StateScreenBox from "./src/screens/statescreenbox";
+import InputComponent from "./src/screens/inputcomponent";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+
+// create Home Screen & List Screen or 2 screen
+const stack = createStackNavigator();
+function App(){
+  return(
+    <NavigationContainer>
+      <stack.Navigator initialRouteName="Home"> 
+        <stack.Screen name="Home" component={HomeScreen}/>
+        <stack.Screen name="List" component={ListScreen}/>
+        <stack.Screen name="Listarray" component={ListScreenArray}/>
+        <stack.Screen name="All Cards" component={card}/>
+        <stack.Screen name="Storage Screen" component={StorageScreen}/>
+        <stack.Screen name="State Screen" component={StateScreen}/>
+        <stack.Screen name="State Screen Box" component={StateScreenBox}/>
+        <stack.Screen name="Input Component" component={InputComponent}/>
+      </stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
